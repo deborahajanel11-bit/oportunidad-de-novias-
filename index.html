@@ -1,0 +1,920 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fbf5df">
+
+<title>Una pregunta para ti</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --cream: #fbf8ef;
+    --white: #fffefa;
+    --butter: #f6e9b7;
+    --yellow: #e8cb71;
+    --gold: #a98736;
+    --dark: #3f3829;
+    --muted: #837a68;
+    --line: #e9dfc5;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+::selection {
+    background: var(--yellow);
+    color: var(--dark);
+}
+
+/* Navegación */
+
+nav {
+    height: 78px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    background: rgba(255, 254, 250, .88);
+}
+
+.brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    letter-spacing: 1px;
+}
+
+.brand span {
+    color: var(--gold);
+}
+
+.nav-note {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--muted);
+}
+
+/* Portada */
+
+.hero {
+    min-height: 690px;
+    padding: 100px 24px 95px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background:
+        radial-gradient(ellipse at 50% 40%,
+        #fffdf5 0%, #fbf5df 58%, #f5e8bb 100%);
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border: 1px solid #d7bc6b70;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero::before {
+    top: 55px;
+    left: -100px;
+}
+
+.hero::after {
+    bottom: 35px;
+    right: -100px;
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(43px, 7vw, 76px);
+    line-height: 1.2;
+    max-width: 850px;
+    animation: fadeUp 1s ease both;
+}
+
+.hero h1 em {
+    color: var(--gold);
+    font-weight: 400;
+}
+
+.hero-description {
+    max-width: 490px;
+    margin-top: 27px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 2;
+    animation: fadeUp 1s .2s ease both;
+}
+
+.hero-button {
+    margin-top: 35px;
+    display: inline-block;
+    padding: 14px 29px;
+    background: var(--dark);
+    color: white;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background .3s, transform .3s;
+}
+
+.hero-button:hover {
+    background: var(--gold);
+    transform: translateY(-3px);
+}
+
+.scroll-indicator {
+    margin-top: 65px;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--muted);
+}
+
+/* Secciones */
+
+section.content {
+    padding: 105px 24px;
+}
+
+.section-inner {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+}
+
+.section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(32px, 5vw, 46px);
+    line-height: 1.35;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.section-intro {
+    max-width: 550px;
+    margin: 0 auto 45px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
+}
+
+/* Carta */
+
+.letter-section {
+    background: var(--white);
+}
+
+.letter {
+    max-width: 690px;
+    margin: auto;
+    padding: clamp(30px, 6vw, 65px);
+    background: #fffefa;
+    border: 1px solid var(--line);
+    position: relative;
+}
+
+.letter::before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 60px;
+    background: var(--yellow);
+    margin-bottom: 30px;
+}
+
+.letter-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.letter p {
+    font-size: 13px;
+    line-height: 2.2;
+    color: #655d4f;
+    margin-bottom: 20px;
+}
+
+.letter .closing {
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-style: italic;
+    color: var(--gold);
+}
+
+/* La distancia */
+
+.distance-section {
+    background: #f6efd9;
+}
+
+.distance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.distance-card {
+    padding: 32px 27px;
+    background: rgba(255, 254, 250, .8);
+    border: 1px solid #e9dfc5;
+}
+
+.distance-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+
+.distance-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.distance-card p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 2;
+}
+
+.distance-quote {
+    text-align: center;
+    max-width: 630px;
+    margin: 45px auto 0;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(23px, 4vw, 31px);
+    font-style: italic;
+    line-height: 1.7;
+}
+
+/* Promesas */
+
+.promises {
+    background: var(--white);
+}
+
+.promise-list {
+    max-width: 650px;
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+}
+
+.promise {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 15px;
+    padding: 23px 5px;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+}
+
+.promise-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+}
+
+.promise h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.promise p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+/* Propuesta */
+
+.proposal-section {
+    padding: 110px 20px;
+    text-align: center;
+    background: linear-gradient(145deg, #f5e7b7, #fff9e8 65%, #f2e3ae);
+}
+
+.proposal-card {
+    max-width: 760px;
+    margin: auto;
+    padding: clamp(30px, 7vw, 75px);
+    background: var(--white);
+    border: 1px solid #e6d8ad;
+    position: relative;
+}
+
+.proposal-card::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1px solid #eee4c9;
+    pointer-events: none;
+}
+
+.proposal-content {
+    position: relative;
+}
+
+.proposal-kicker {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.proposal-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 7vw, 59px);
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.proposal-card h2 em {
+    color: var(--gold);
+    font-weight: 400;
+}
+
+.proposal-text {
+    max-width: 490px;
+    margin: 25px auto 30px;
+    font-size: 13px;
+    line-height: 2.1;
+    color: var(--muted);
+}
+
+.proposal-question {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(25px, 4.5vw, 37px);
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 30px 0;
+}
+
+.proposal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    border: 1px solid var(--dark);
+    padding: 15px 24px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: .25s ease;
+}
+
+.btn-yes {
+    background: var(--dark);
+    color: white;
+}
+
+.btn-yes:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+
+.btn-letter {
+    background: transparent;
+    color: var(--dark);
+}
+
+.btn-letter:hover {
+    background: var(--butter);
+}
+
+.response {
+    display: none;
+    margin-top: 35px;
+    padding: 25px 20px;
+    border-top: 1px solid var(--line);
+    animation: fadeUp .6s ease both;
+}
+
+.response h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+
+.response p {
+    font-size: 13px;
+    line-height: 2;
+    color: var(--muted);
+}
+
+/* Pie de página */
+
+footer {
+    padding: 35px 20px;
+    background: #fffefa;
+    border-top: 1px solid var(--line);
+    text-align: center;
+}
+
+.footer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+}
+
+.footer-subtitle {
+    margin-top: 8px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--muted);
+}
+
+.footer-line {
+    width: 40px;
+    height: 1px;
+    background: var(--yellow);
+    margin: 20px auto 0;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        height: 68px;
+        padding: 0 6%;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+
+    .nav-note {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .hero {
+        min-height: 620px;
+        padding-top: 80px;
+    }
+
+    section.content {
+        padding: 75px 20px;
+    }
+
+    .distance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .distance-card {
+        padding: 25px;
+    }
+
+    .proposal-section {
+        padding: 75px 15px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 290px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#" class="brand">Para ti<span>.</span></a>
+    <div class="nav-note">Una carta de amor</div>
+</nav>
+
+<main>
+
+    <section class="hero">
+        <div class="eyebrow">Una historia escrita para nosotras</div>
+
+        <h1>
+            Si pudiera elegir<br>
+            <em>una y mil veces,</em><br>
+            te elegiría a ti.
+        </h1>
+
+        <p class="hero-description">
+            Hay sentimientos que no conocen distancias,
+            palabras que nunca son suficientes y una persona
+            que hace que todo tenga un significado diferente.
+            Para mí, esa persona eres tú.
+        </p>
+
+        <a href="#carta" class="hero-button">
+            Leer mi carta
+        </a>
+
+        <div class="scroll-indicator">
+            CON TODO MI AMOR · PARA TI
+        </div>
+    </section>
+
+    <section class="content letter-section" id="carta">
+        <div class="section-inner">
+
+            <div class="section-label">01 — Lo que siento por ti</div>
+
+            <h2 class="section-title">
+                Algunas cosas que<br>quiero que sepas
+            </h2>
+
+            <p class="section-intro">
+                Quizá no existan palabras suficientes para describir
+                lo que siento, pero quiero intentarlo.
+            </p>
+
+            <article class="letter">
+
+                <h3 class="letter-heading">
+                    A la mujer que hace especial mis días:
+                </h3>
+
+                <p>
+                    No sé exactamente cómo comenzar esta carta,
+                    porque cuando se trata de ti siento tantas cosas
+                    que resulta difícil ordenarlas. Lo único que sé
+                    con certeza es que te amo y que tenerte en mi vida
+                    significa mucho más de lo que imaginas.
+                </p>
+
+                <p>
+                    Me gusta saber que existes, que puedo hablar contigo,
+                    conocer tus pensamientos, compartir mis días y
+                    encontrar motivos para sonreír gracias a ti.
+                    Entre tantas personas en el mundo, tú te has
+                    convertido en alguien verdaderamente importante
+                    para mi corazón.
+                </p>
+
+                <p>
+                    A veces me gustaría que la distancia no existiera.
+                    Quisiera poder estar a tu lado, abrazarte después
+                    de un día difícil, caminar contigo sin mirar el
+                    reloj y decirte mirándote a los ojos todo aquello
+                    que tantas veces intento explicarte por mensajes.
+                </p>
+
+                <p>
+                    Sin embargo, no quiero que los kilómetros sean
+                    lo único que recordemos de nuestra historia.
+                    También quiero recordar nuestras conversaciones,
+                    las cosas que nos hacen reír, los momentos en que
+                    nos escuchamos y cada pequeño paso que damos para
+                    conocernos mejor.
+                </p>
+
+                <p>
+                    No te prometo una relación perfecta ni días
+                    en los que todo resulte sencillo. Te prometo
+                    honestidad, respeto y la intención de construir
+                    algo bonito contigo. Quiero aprender a comprenderte,
+                    escuchar lo que sientes y cuidar lo que estamos
+                    construyendo, sin dejar de ser nosotras mismas.
+                </p>
+
+                <p>
+                    Quiero que tengas la libertad de ser tú conmigo,
+                    que puedas hablar de tus miedos y tus sueños,
+                    que tus alegrías también tengan un lugar en mi vida
+                    y que nunca tengas que fingir ser alguien diferente
+                    para sentirte querida.
+                </p>
+
+                <p>
+                    Sueño con el día en que podamos encontrarnos
+                    y que todo aquello que hemos imaginado se convierta
+                    en un recuerdo real. Mientras ese día llega,
+                    quiero seguir eligiéndote con paciencia, cariño
+                    y sinceridad, respetando nuestros tiempos y
+                    cuidando lo que sentimos.
+                </p>
+
+                <p>
+                    Te amo por lo que eres, por lo que compartes conmigo
+                    y por todo aquello que todavía me queda por conocer
+                    de ti. No quiero que estas palabras sean solamente
+                    una declaración bonita, sino una manera de mostrarte
+                    lo importante que eres para mí.
+                </p>
+
+                <p>
+                    Si hay algo que deseo que recuerdes después de leer
+                    esta carta, es que la distancia no disminuye el
+                    valor de lo que siento. Aunque hoy no pueda estar
+                    físicamente a tu lado, quiero que mis acciones,
+                    mis palabras y mi forma de tratarte te demuestren
+                    que este cariño es sincero.
+                </p>
+
+                <p class="closing">
+                    Con todo mi amor, hoy y en cada nuevo comienzo.
+                </p>
+
+            </article>
+        </div>
+    </section>
+
+    <section class="content distance-section">
+        <div class="section-inner">
+
+            <div class="section-label">02 — Nosotras</div>
+
+            <h2 class="section-title">
+                La distancia no<br>define nuestra historia
+            </h2>
+
+            <p class="section-intro">
+                Estar lejos no significa que nuestros sentimientos
+                sean menos importantes. Significa que tenemos una
+                historia que construir de una manera diferente.
+            </p>
+
+            <div class="distance-grid">
+
+                <article class="distance-card">
+                    <div class="distance-number">01.</div>
+                    <h3>Hoy, desde lejos</h3>
+                    <p>
+                        Aprendemos a encontrarnos en las palabras,
+                        en las llamadas, en el tiempo que nos dedicamos
+                        y en los pequeños detalles que nos acercan.
+                    </p>
+                </article>
+
+                <article class="distance-card">
+                    <div class="distance-number">02.</div>
+                    <h3>Mañana, juntas</h3>
+                    <p>
+                        Tenemos la ilusión de compartir momentos
+                        en persona, crear nuevos recuerdos y descubrir
+                        cómo se siente estar cerca sin una pantalla
+                        de por medio.
+                    </p>
+                </article>
+
+            </div>
+
+            <p class="distance-quote">
+                "No necesito que todo sea sencillo; quiero que
+                lo que construyamos sea sincero y que las dos
+                queramos seguir eligiéndonos."
+            </p>
+        </div>
+    </section>
+
+    <section class="content promises">
+        <div class="section-inner">
+
+            <div class="section-label">03 — Lo que deseo construir</div>
+
+            <h2 class="section-title">
+                No se trata de prometerlo todo,<br>
+                sino de cuidar lo que tenemos.
+            </h2>
+
+            <p class="section-intro">
+                Estas son algunas de las cosas que quiero aportar
+                a nuestra relación.
+            </p>
+
+            <div class="promise-list">
+
+                <article class="promise">
+                    <div class="promise-number">01</div>
+                    <div>
+                        <h3>Comunicación sincera</h3>
+                        <p>
+                            Quiero que podamos hablar con confianza,
+                            expresar lo que sentimos y escucharnos
+                            incluso cuando no pensemos igual.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="promise">
+                    <div class="promise-number">02</div>
+                    <div>
+                        <h3>Respeto y comprensión</h3>
+                        <p>
+                            Quiero respetar tus tiempos, tus espacios,
+                            tus sueños y tu forma de ver el mundo.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="promise">
+                    <div class="promise-number">03</div>
+                    <div>
+                        <h3>Detalles que nos acerquen</h3>
+                        <p>
+                            Quiero encontrar maneras de hacerte sentir
+                            querida, incluso en los días en que no
+                            podamos estar juntas físicamente.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="promise">
+                    <div class="promise-number">04</div>
+                    <div>
+                        <h3>Un futuro que podamos compartir</h3>
+                        <p>
+                            Quiero que podamos hablar de nuestros
+                            planes, apoyarnos mutuamente y construir
+                            una relación en la que las dos nos sintamos
+                            felices y valoradas.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="proposal-section" id="propuesta">
+        <div class="proposal-card">
+            <div class="proposal-content">
+
+                <div class="proposal-kicker">
+                    Una pregunta importante
+                </div>
+
+                <h2>
+                    Quiero comenzar<br>
+                    <em>algo bonito contigo.</em>
+                </h2>
+
+                <p class="proposal-text">
+                    He escrito estas palabras porque quiero que sepas
+                    lo que hay en mi corazón. No quiero que nuestra
+                    historia se quede únicamente en lo que imaginamos;
+                    me gustaría que pudiéramos dar un paso más,
+                    juntas y a nuestro propio ritmo.
+                    <br><br>
+                    Quiero compartir contigo mis días, mis pensamientos,
+                    mis ilusiones y todos esos pequeños momentos que
+                    hacen que una relación sea especial.
+                </p>
+
+                <div class="proposal-question">
+                    ¿Quieres ser mi novia?
+                </div>
+
+                <p class="proposal-text">
+                    No importa que hoy nos separen kilómetros.
+                    Lo que deseo es que las dos queramos construir
+                    esta historia con amor, respeto y sinceridad.
+                </p>
+
+                <div class="proposal-buttons">
+                    <button class="btn btn-yes" onclick="acceptProposal()">
+                        Sí, quiero
+                    </button>
+
+                    <button class="btn btn-letter" onclick="readAgain()">
+                        Volver a leer mi carta
+                    </button>
+                </div>
+
+                <div class="response" id="response" aria-live="polite">
+                    <h3>Entonces, comencemos nuestra historia.</h3>
+
+                    <p>
+                        Me hace mucha ilusión imaginar todo lo que
+                        podemos construir juntas. Quiero que este
+                        comienzo esté lleno de cariño, confianza,
+                        conversaciones sinceras y momentos que algún
+                        día podamos recordar con una sonrisa.
+                        Gracias por darme la oportunidad de compartir
+                        este sentimiento contigo.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-title">Una historia de dos.</div>
+    <div class="footer-subtitle">
+        Escrita con amor, pensada para ti
+    </div>
+    <div class="footer-line"></div>
+</footer>
+
+<script>
+function acceptProposal() {
+    const response = document.getElementById('response');
+
+    response.style.display = 'block';
+
+    response.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+    });
+}
+
+function readAgain() {
+    document.getElementById('carta').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+</script>
+
+</body>
+</html>
